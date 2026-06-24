@@ -1,0 +1,7 @@
+streamlit
+zxcvbn
+qiskit-ibm-runtime
+scipy
+numpy
+matplotlib
+pandas
