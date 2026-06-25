@@ -425,22 +425,34 @@ with tab2:
 
 # ----------------- NOISE & PHYSICS DISCUSSION (EXPANDER) -----------------
 st.markdown("---")
-with st.expander("🔍 Quantum Noise & Real Hardware Discussion (Click to Expand)"):
+with st.expander("🔍 Quantum Noise vs. Ideal Simulation (Click to Expand)"):
     col_n1, col_n2 = st.columns(2)
     with col_n1:
-        st.markdown("### NISQ Era Noise Sources")
+        st.markdown("### The Spinning Coin Analogy")
         st.write(
-            "- **Decoherence ($T_1$/$T_2$ decay):** Qubits interact with the environment and naturally decay from the $|1\\rangle$ state to the $|0\\rangle$ ground state over time.\n"
-            "- **Gate Inaccuracies:** Imperfections in microwave pulses rotate qubits off-target, skewing ideal superposition angles.\n"
-            "- **Readout Errors:** Measurements are imperfect; a physical $|1\\rangle$ state may register as a $|0\\rangle$."
+            "Think of a quantum bit (qubit) like a coin on a table. When lying flat, it is either "
+            "Heads (1) or Tails (0). But when you flick it and it spins, it is in **superposition**—effectively "
+            "both 1 and 0 at the same time.\n\n"
+            "Stopping the spin with your hand collapses the state, giving you a measurement of 1 or 0.\n\n"
+            "* **The Local Simulator** is like spinning a coin in a perfect, windless vacuum with zero gravity. It produces "
+            "mathematically flawless 50/50 randomness every single time.\n"
+            "* **Real IBM Quantum Hardware** is like spinning that coin on a bumpy, vibrating table in a drafty room. Physical "
+            "glitches interfere with the results, causing minor bias."
         )
     with col_n2:
-        st.markdown("### Impact on Randomness")
+        st.markdown("### The 3 Real-World Quantum Glitches")
         st.write(
-            "Noise causes physical quantum computers to produce slight **bias** (excess of 0s due to relaxation) and **autocorrelation**.\n"
-            "This is why the **Qiskit Aer Simulator** models idealized, mathematically perfect randomness that easily passes all tests, "
-            "while **Real IBM Hardware** shows minor entropy reduction. In cryptographic production, raw quantum streams "
-            "must be passed through **randomness extractors** to strip out physical noise bias."
+            "1. **Decoherence (The Tired Qubit)**: A spinning coin eventually loses speed and falls over. Real qubits "
+            "get 'tired' quickly due to temperature fluctuations, dropping out of their spin and collapsing back to the ground state (0). "
+            "This creates an excess of zeros in the raw bitstream.\n"
+            "2. **Gate Errors (The Lazy Flick)**: To spin a coin, you must flick it. If your finger slips, the spin is wobbly. "
+            "In hardware, we use microwave pulses to rotate qubits. Slight inaccuracies in these pulses cause wobbly superposition.\n"
+            "3. **Readout Errors (The Dark Room)**: If you read the coin in a dark room with a blurry camera, you might misread a "
+            "Heads as Tails. Reading subatomic quantum states is highly sensitive, and measurement readings sometimes misinterpret 1s as 0s."
+        )
+        st.markdown(
+            "**Takeaway**: Because real hardware is noisy, physical quantum random numbers are run through a classical program "
+            "called a **Randomness Extractor** to 'clean' the stream and guarantee perfect cryptographic security."
         )
 
 # ----------------- FOOTER -----------------
