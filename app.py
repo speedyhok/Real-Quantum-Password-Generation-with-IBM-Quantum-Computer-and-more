@@ -181,6 +181,9 @@ st.markdown("""
 st.markdown("""
 <div class="main-title-container">
     <div class="main-title">🔑 Quantum Random Password Generator</div>
+    <p style="color: #94a3b8; font-size: 1.05rem; margin-top: 8px; margin-bottom: 0; line-height: 1.6; font-family: 'Plus Jakarta Sans', sans-serif; max-width: 800px;">
+        Harness the fundamental laws of quantum mechanics to generate secure passwords. This application executes Hadamard superposition circuits on superconducting IBM Quantum hardware and local simulators, evaluating their physical randomness quality in real-time.
+    </p>
 </div>
 """, unsafe_allow_html=True)
 
